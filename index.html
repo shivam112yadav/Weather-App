@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Main Weather Application Container -->
+    <div class="weather-app">
+        
+        <!-- Application Header -->
+        <header class="app-header">
+            <div class="app-title">Live Weather App</div>
+            <div class="app-actions">
+                <button class="btn" id="refresh-btn" title="Refresh Weather Data" aria-label="Refresh">
+                    <i class='bx bx-refresh'></i>
+                </button>
+                <button class="btn" id="location-btn" title="Use Current Location" aria-label="Get Location Weather">
+                    <i class='bx bx-current-location'></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-container">
+            <div class="search-wrapper">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="search-input" 
+                    placeholder="Search for a city..." 
+                    autocomplete="off"
+                    aria-label="City search input"
+                >
+                <button class="search-btn" id="search-btn" aria-label="Search">
+                    <i class='bx bx-search'></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading" role="status" aria-live="polite">
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <div class="loading-text">Loading weather data...</div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message" role="alert" aria-live="assertive"></div>
+
+        <!-- Main Weather Display -->
+        <main class="weather-display" id="weather-display">
+            
+            <!-- Location and Date Info -->
+            <div class="weather-header">
+                <div class="location" id="location">
+                    <i class='bx bx-map' aria-hidden="true"></i>
+                    <span>Loading...</span>
+                </div>
+                <div class="date-time" id="date-time">--:--, --- --</div>
+            </div>
+            
+            <!-- Current Weather Section -->
+            <section class="current-weather">
+                <div class="current-weather-container">
+                    
+                    <!-- Main Weather Info -->
+                    <div class="weather-main">
+                        <img 
+                            class="weather-icon" 
+                            id="weather-icon" 
+                            src="" 
+                            alt="Weather condition icon"
+                        >
+                        <div class="temperature" id="temperature">
+                            <span class="temp-value">--</span>
+                            <span class="temp-symbol">°</span>
+                            <span class="temp-unit">C</span>
+                        </div>
+                        <div class="weather-description" id="weather-description">
+                            Loading weather condition...
+                        </div>
+                    </div>
+        
+                    <!-- Weather Details Grid -->
+                    <div class="weather-details">
+                        <div class="detail-card">
+                            <i class='bx bxs-thermometer detail-icon' aria-hidden="true"></i>
+                            <div class="detail-value" id="feels-like">--°</div>
+                            <div class="detail-label">Feels Like</div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class='bx bxs-droplet-half detail-icon' aria-hidden="true"></i>
+                            <div class="detail-value" id="humidity">--%</div>
+                            <div class="detail-label">Humidity</div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class='bx bx-wind detail-icon' aria-hidden="true"></i>
+                            <div class="detail-value" id="wind-speed">-- km/h</div>
+                            <div class="detail-label">Wind Speed</div>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class='bx bxs-sun detail-icon' aria-hidden="true"></i>
+                            <div class="detail-value" id="uv-index">--</div>
+                            <div class="detail-label">UV Index</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weather Forecast Section -->
+            <section class="forecast-container">
+                <h2 class="forecast-title">6-Day Forecast</h2>
+                <div class="forecast-items" id="forecast-items">
+                    <!-- Forecast items will be populated dynamically -->
+                </div>
+            </section>
+
+            <!-- Temperature Unit Toggle -->
+            <div class="unit-toggle" role="radiogroup" aria-label="Temperature unit selection">
+                <button 
+                    class="unit-btn active" 
+                    id="celsius-btn" 
+                    role="radio" 
+                    aria-checked="true"
+                    aria-label="Celsius"
+                >
+                    °C
+                </button>
+                <button 
+                    class="unit-btn" 
+                    id="fahrenheit-btn" 
+                    role="radio" 
+                    aria-checked="false"
+                    aria-label="Fahrenheit"
+                >
+                    °F
+                </button>
+            </div>
+            
+            <!-- Last Updated Timestamp -->
+            <div class="last-updated" id="last-updated">
+                Last updated: --:--:--
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./app.js"></script>
+</body>
+</html>
