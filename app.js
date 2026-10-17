@@ -7,7 +7,7 @@ class WeatherApp {
   constructor() {
       // Configuration
       this.config = {
-          apiKey: '15ee009ee14b3478a9650080c682ed2a',
+          apiKey: '',
           baseUrl: 'https://api.openweathermap.org/data/2.5',
           refreshInterval: 900000, // 15 minutes
           defaultCity: 'Delhi'
